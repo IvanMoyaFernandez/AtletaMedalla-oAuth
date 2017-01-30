@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myAtletaLabel" data-translate="atletaMedallaApp.atleta.home.createOrEditLabel">Create or edit a Atleta</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.atleta.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.atleta.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="atletaMedallaApp.atleta.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.atleta.nombre"
+                    required />
+            <div ng-show="editForm.nombre.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombre.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="atletaMedallaApp.atleta.apellidos" for="field_apellidos">Apellidos</label>
+            <input type="text" class="form-control" name="apellidos" id="field_apellidos"
+                    ng-model="vm.atleta.apellidos"
+                    required />
+            <div ng-show="editForm.apellidos.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.apellidos.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="atletaMedallaApp.atleta.nacionalidad" for="field_nacionalidad">Nacionalidad</label>
+            <input type="text" class="form-control" name="nacionalidad" id="field_nacionalidad"
+                    ng-model="vm.atleta.nacionalidad"
+                    required />
+            <div ng-show="editForm.nacionalidad.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nacionalidad.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="atletaMedallaApp.atleta.fechaNacimiento" for="field_fechaNacimiento">Fecha Nacimiento</label>
+                <div class="input-group">
+                    <input id="field_fechaNacimiento" type="text" class="form-control" name="fechaNacimiento" uib-datepicker-popup="{{dateformat}}" ng-model="vm.atleta.fechaNacimiento" is-open="vm.datePickerOpenStatus.fechaNacimiento"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaNacimiento')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.fechaNacimiento.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.fechaNacimiento.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

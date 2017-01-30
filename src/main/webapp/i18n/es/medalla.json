@@ -1,0 +1,25 @@
+{
+    "atletaMedallaApp": {
+        "medalla" : {
+            "home": {
+                "title": "Medallas",
+                "createLabel": "Crear nuevo Medalla",
+                "createOrEditLabel": "Crear o editar Medalla",
+                "search": "Search for Medalla"
+            },
+            "created": "Un nuevo Medalla ha sido creado con el identificador {{ param }}",
+            "updated": "Un Medalla ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Medalla ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Medalla {{ id }}?"
+            },
+            "detail": {
+                "title": "Medalla"
+            },
+            "tipoMedalla": "Tipo Medalla",
+            "especialidad": "Especialidad",
+            "competicion": "Competicion",
+            "atleta": "Atleta"
+        }
+    }
+}

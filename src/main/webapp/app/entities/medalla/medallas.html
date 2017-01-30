@@ -1,0 +1,64 @@
+<div>
+    <h2 data-translate="atletaMedallaApp.medalla.home.title">Medallas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="medalla.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="atletaMedallaApp.medalla.home.createLabel">
+                        Create new Medalla
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="atletaMedallaApp.medalla.tipoMedalla">Tipo Medalla</span></th>
+                    <th><span data-translate="atletaMedallaApp.medalla.especialidad">Especialidad</span></th>
+                    <th><span data-translate="atletaMedallaApp.medalla.competicion">Competicion</span></th>
+                    <th><span data-translate="atletaMedallaApp.medalla.atleta">Atleta</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medalla in vm.medallas track by medalla.id">
+                    <td><a ui-sref="medalla-detail({id:medalla.id})">{{medalla.id}}</a></td>
+                    <td data-translate="{{'atletaMedallaApp.TipoMedalla.' + medalla.tipoMedalla}}">{{medalla.tipoMedalla}}</td>
+                    <td>{{medalla.especialidad}}</td>
+                    <td>{{medalla.competicion}}</td>
+                    <td>
+                        <a ui-sref="atleta-detail({id:medalla.atleta.id})">{{medalla.atleta.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="medalla-detail({id:medalla.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medalla.edit({id:medalla.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medalla.delete({id:medalla.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

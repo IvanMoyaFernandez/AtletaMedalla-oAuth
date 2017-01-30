@@ -1,0 +1,10 @@
+{
+    "atletaMedallaApp": {
+        "TipoMedalla" : {
+            "null": "",
+            "ORO": "ORO",
+            "PLATA": "PLATA",
+            "BRONCE": "BRONCE"
+        }
+    }
+}
