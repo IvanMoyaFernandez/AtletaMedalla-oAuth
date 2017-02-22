@@ -11,6 +11,9 @@ import java.util.List;
 public interface AtletaRepository extends JpaRepository<Atleta, Long> {
     public List<Atleta> findByNombre(String nombreAtleta);
 
+    // Buscar Atleta por nombre
+    List<Atleta> findByNombreContaining(String nombre);
+
     // 1. Devolver todos los Atletas de una nacionalidad determinada
     List<Atleta> findByNacionalidadLike(String nacionalidad);
 

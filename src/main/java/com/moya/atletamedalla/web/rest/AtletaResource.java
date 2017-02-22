@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ import java.util.Optional;
 public class AtletaResource {
 
     private final Logger log = LoggerFactory.getLogger(AtletaResource.class);
-        
+
     @Inject
     private AtletaRepository atletaRepository;
 
@@ -105,6 +106,12 @@ public class AtletaResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    // Devolver Atletas que coincidan con la nacionalidad
+    @GetMapping("/nacionaliadLike/{nacionalidad}")
+    public List<Atleta> findByNacionalidadLike(@PathVariable String nacionalidad) {
+        return atletaRepository.findByNacionalidadLike(nacionalidad);
+    }
+
     /**
      * DELETE  /atletas/:id : delete the "id" atleta.
      *
@@ -119,4 +126,14 @@ public class AtletaResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("atleta", id.toString())).build();
     }
 
+    // FILTROS
+
+    // Devolver Atletas que coincidan con el nombre
+    @GetMapping("/atletas/byName/{name}")
+    @Timed
+    public List<Atleta> getAtletasByName(@PathVariable String name) {
+        log.debug("REST request to get Atleta : {}", name);
+        List<Atleta> nombres = atletaRepository.findByNombreContaining(name);
+        return nombres;
+    }
 }
